@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html lang="en">
 <head>
@@ -17,18 +17,12 @@
 </head>
 <body>
     <div class="container">
-        <div class="row">
-            <div class="parentDiv col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 col-sm-8 col-sm-offset-2 col-xs-12">
+        <div class="row maindiv">
+            <div style="background-color:pink;" class="col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6 col-xs-12">
+                <h1 class="text-center">Twitch Streamers</h1>
                 <div class="row">
-                    <div id="maindiv" class="text-center col-md-6 col-md-offset-3 col-lg-10 col-lg-offset-1 col-sm-8 col-sm-offset-2 col-xs-12">
-                        <h1>TWITCH STREAMERS</h1>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4 col-md-offset-3  col-lg-offset-1 col-lg-6  col-sm-6 col-xs-6">
-                        <input type="search" id="search" placeholder="Search Channel" />
-                    </div>
-                    <div class="col-md-2 col-lg-5  col-sm-6 col-xs-6">
+                    <div class="col-xs-6"><input type="search" id="search" placeholder="Search Channel" /></div>
+                    <div class="col-xs-6">
                         <ul class="list-inline">
                             <li id="on" class="selector"><a href="#online">Online</a></li>
                             <li id="off" class="selector"><a href="#offline">Offline</a></li>
@@ -40,8 +34,11 @@
                 <div id="offline"></div>
                 <div id="all"></div>
                 <div id="results"></div>
+               
             </div>
         </div>
     </div>
+    
+
 </body>
 </html>
