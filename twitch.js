@@ -25,7 +25,7 @@ $(document).ready(function () {
         $("#online, #offline,#all").addClass("hidden");
         if (searchVal.length >= 3) {
             console.log(searchVal);
-            ajax(searchVal);
+            searchFunction(searchVal);
         }
         else
             if (searchVal.length == 0)
@@ -34,6 +34,26 @@ $(document).ready(function () {
 
             }
     });
+
+
+    function searchFunction(searchVal) {
+
+        $.ajax({
+            url: 'https://api.twitch.tv/kraken/search/channels?q=' + encodeURIComponent(searchVal) + '&limit=5&client_id=tfv1nlsqksko9bbz9bti1wtati4e5q'
+        }).done(function (data) {
+
+            $(data.channels).each(function (i, item) {
+                type = "search";
+                ajax(item.display_name);
+
+            });
+            if (data.channels.length === 0) {
+                var innerHTML = '<div id="no-results" class="col-xs-10 col-xs-offset-1 item"><h3>No results</h3><h6>Account <b>' + searchVal + '</b> does not exist.</h6></div>';
+                $("#results").append(innerHTML);
+            }
+        });
+    }
+
     $.each(usernames, function (index, username) {
         type = "";
         ajax(username);
@@ -69,12 +89,12 @@ $(document).ready(function () {
                 success: function (data) {
                     
                     var logo = data.logo != null ? data.logo : "https://dummyimage.com/50x50/1.jpg&text=X";
+                   
                     var url = data.url != null ? data.url : "https://freecodecamp.com";
                     var status = data.status != null ? data.status : "Offline";
-
-                    var $html = $("<div class='row channel'><div class='col-lg-offset-1 col-lg-2 col-md-2 col-sm-2 col-xs-2'><img class='logo img-responsive' src=" + logo + " alt=" + username + "></div><div class='col-lg-2 col-md-2 col-sm-2 col-xs-2'><a href=" + url + " target='_blank'>" + username + "</a></div><div class='status col-lg-6 col-md-8 col-sm-8 col-xs-8'><em>" + status + "</em></div></div>");
+                    var $html = '<div class="row"><div class="col-xs-2 vcenter"><img class="logo img-responsive" src="' + logo + '" alt=' + username + '></div><div class="col-xs-2 vcenter"><a href="' + url + '"  target="_blank">' + username + '</a></div><div class="col-xs-7 vcenter status"><em>' + status + '</em></div></div>';
                     if (type == "search") {
-                        $("#results").append($html);
+                       $("#results").append($html);
                     }
                     else {
                         $("#offline").append($html);
@@ -88,12 +108,12 @@ $(document).ready(function () {
             
         }
         else {
-            console.log(data);                      
+                        
           
             var logo = data.stream.channel.logo != null ? data.stream.channel.logo : "https://dummyimage.com/50x50/1.jpg&text=X";
             var url = data.stream.channel.url != null ? data.stream.channel.url : "https://freecodecamp.com";
             var status = data.stream.channel.status != null ? data.stream.channel.status : "Online";
-            var $html = $("<div class='row channel'><div class='col-lg-offset-1 col-lg-2 col-md-2 col-sm-2 col-xs-2'><img class='logo img-responsive' src=" + logo + " alt=" + username + "></div><div class='col-lg-2 col-md-2 col-sm-2 col-xs-2'><a href=" + url + " target='_blank'>" + username + "</a></div><div class='status col-lg-6 col-md-8 col-sm-8 col-xs-8'><em>" + status + "</em></div></div>");
+            var $html = '<div class="row"><div class="col-xs-2 vcenter"><img class="logo img-responsive" src="' + logo + '" alt=' + username + '></div><div class="col-xs-2 vcenter"><a href="' + url + '" target="_blank">' + username + '</a></div><div class="col-xs-7 vcenter status"><em>' + status + '</em></div></div>';
             if (type == "search") {
                 $("#results").append($html);
             }
