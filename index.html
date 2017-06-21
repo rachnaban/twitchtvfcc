@@ -1,44 +1,32 @@
-<!DOCTYPE html>
-
+﻿<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>Twitch.Tv</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="twitch.css" />
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato" />
-    <script type="text/javascript" src="twitch.js">
-
-    </script>
-</head>
-<body>
-    <div class="container">
-        <div class="row maindiv">
-            <div style="background-color:pink;" class="col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6 col-xs-12">
-                <h1 class="text-center">Twitch Streamers</h1>
-                <div class="row">
-                    <div class="col-xs-6"><input type="search" id="search" placeholder="Search Channel" /></div>
-                    <div class="col-xs-6">
-                        <ul class="list-inline">
-                            <li id="on" class="selector"><a href="#online">Online</a></li>
-                            <li id="off" class="selector"><a href="#offline">Offline</a></li>
-                            <li id="alldiv" class="selector active"><a href="#all">All</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div id="online"></div>
-                <div id="offline"></div>
-                <div id="all"></div>
-                <div id="results"></div>
-               
+   <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+      <title>Twitch.Tv</title>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <link rel="stylesheet" href="twitch.css" />
+      <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato" />
+      <script type="text/javascript" src="twitch.js"></script>
+      <style>
+      </style>
+   </head>
+   <body>
+        <div class="search-bar">
+            <div class="tab">
+               <button id='defaultTab' class="tablinks" data-id='all'>ALL</button>
+               <button class="tablinks" data-id='online'>ONLINE</button>
+               <button class="tablinks" data-id='offline'>OFFLINE</button>
             </div>
-        </div>
-    </div>
-    
-
-</body>
+            <!--<div class='search'>
+               <input type="search" id="search" placeholder="Search Channel">
+            </div>-->
+         </div>
+         <div id="online" class="tabcontent"></div>
+         <div id="offline" class="tabcontent"></div>
+         <div id="all" class="tabcontent"></div>
+         <div id="results" class="tabcontent"></div>     
+   </body>
 </html>
